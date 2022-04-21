@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-registrar',
   templateUrl: 'registrar.page.html',
@@ -10,6 +10,16 @@ export class RegistrarPage implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   selected = 'none';
+  email = new FormControl('', [Validators.required, Validators.email]);
+  hide = true;
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'Debe ingresar un valor';
+    }
+
+    return this.email.hasError('email') ? 'Email No Válido' : '';
+  }
 
   constructor(private _formBuilder: FormBuilder) {}
 

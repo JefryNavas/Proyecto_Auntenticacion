@@ -36,8 +36,9 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" (submit)="primer()">
         <ng-template matStepLabel>Cédula: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="ID" formControlName="firstCtrl" required style="color: black;"/>
+        <mat-form-field hintLabel="Max 10 números" appearance="fill">
+          <input matInput #input maxlength="10" placeholder="ID" formControlName="firstCtrl" required style="color: black;"/>
+          <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
         </mat-form-field>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
@@ -80,7 +81,7 @@
         <ng-template matStepLabel>Fecha de Nacimiento: </ng-template>
         <mat-form-field appearance="fill" style="margin-left: -30px">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input matInput style="color: black;"[matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -93,9 +94,13 @@
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Correo Electrónico: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="E-mail" formControlName="firstCtrl" required tyoe="email" style="color: black;"/>
-        </mat-form-field>
+        <div class="example-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="example@example.com" [formControl]="email" style="color: black;" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
           <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
@@ -130,7 +135,8 @@
       <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Dirección: </ng-template>
         <mat-form-field appearance="fill">
-          <input matInput placeholder="Address" formControlName="firstCtrl" required style="color: black;"/>
+          <mat-label>Address</mat-label>
+          <textarea matInput style="color: black;"></textarea>
         </mat-form-field>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
@@ -154,9 +160,16 @@
     <mat-step>
       <form [formGroup]="firstFormGroup" (submit)="tercero()">
         <ng-template matStepLabel>Contraseña: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Password" formControlName="firstCtrl" required  type="password" style="color: black;"/>
-        </mat-form-field>
+        <div class="example-container">
+          <mat-form-field  hintLabel="Max 12 caracteres" style="margin-left: -30px;width: 220px;" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput #input_pass maxlength="12" [type]="hide ? 'password' : 'text'" style="color: black;">
+            <mat-hint align="end">{{input_pass.value?.length || 0}}/12</mat-hint>
+            <button style="color: black;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon style="color:black">{{hide ? '*' : '*'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
           <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
@@ -195,10 +208,10 @@
         </mat-form-field>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button routerLink="/login" style="margin-left: 10px;" mat-raised-button color="primary">Registrar</button>
         </div>
     </form>
     </mat-step>
-    
   </mat-stepper>
 
 </ion-content>
