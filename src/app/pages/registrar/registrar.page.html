@@ -110,8 +110,9 @@
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Teléfono: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Phone" formControlName="firstCtrl" required type="tel" style="color: black;"/>
+        <mat-form-field hintLabel="Max 10 números" appearance="fill">
+          <input matInput #input_phone maxlength="10" placeholder="Phone" formControlName="firstCtrl" required  style="color: black;"/>
+          <mat-hint align="end">{{input_phone.value?.length || 0}}/10</mat-hint>
         </mat-form-field>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
@@ -208,9 +209,41 @@
         </mat-form-field>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button routerLink="/login" style="margin-left: 10px;" mat-raised-button color="primary">Registrar</button>
         </div>
     </form>
+    </mat-step>
+  </mat-stepper>
+  <h6>Método de Autenticación</h6>
+  <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
+        <ng-template matStepLabel>¿Que nombre vas a elegir?: </ng-template>
+        <div>
+          <mat-radio-group>
+            <mat-radio-button style="color: black;" value="madre">Madre</mat-radio-button><br><br>
+            <mat-radio-button style="color: black;" value="mascota">Mascota</mat-radio-button><br><br>
+            <mat-radio-button style="color: black;" value="fruta">Fruta Favorita</mat-radio-button><br><br>
+          </mat-radio-group>
+        </div>
+        <div>
+          <button  mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
+        <ng-template matStepLabel>¿Qué tipo de letras va a escoger?</ng-template>
+        <div>
+          <mat-radio-group>
+            <mat-radio-button style="color: black;" value="madre">Vocales</mat-radio-button><br><br>
+            <mat-radio-button style="color: black;" value="mascota">Consonantes</mat-radio-button><br><br>
+          </mat-radio-group>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button routerLink="/login" style="margin-left: 10px;" mat-raised-button color="primary">Registrar</button>
+        </div>
+      </form>
     </mat-step>
   </mat-stepper>
 
