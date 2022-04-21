@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-import { HomePageRoutingModule } from './home-routing.module';
-import { MaterialModule } from '../material/material.module';
+import { RegistrarPage } from './registrar.page';
+import { RegistrarPageRoutingModule } from './registrar-routing.module';
+import { MaterialModule } from '../../material/material.module';
 
 @NgModule({
   imports: [
@@ -12,9 +12,9 @@ import { MaterialModule } from '../material/material.module';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    RegistrarPageRoutingModule,
     MaterialModule
   ],
-  declarations: [HomePage]
+  declarations: [RegistrarPage]
 })
-export class HomePageModule { }
+export class RegistrarPageModule { }

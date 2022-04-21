@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="height: 1000px;">
+  <div class="ion-text-center">
+    <h6 style="font-size: small;">Inicia sesión con tu usuario y contraseña.</h6>
+    <img src="../../assets/img/logo.png" width="40%" alt="">
+  </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="floating">Usuario
+                        <ion-text color="primary">*</ion-text>
+                    </ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="floating">Contraseña
+                        <ion-text color="primary">*</ion-text>
+                    </ion-label>
+                    <ion-input  type="password"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <br> <br>
+                <ion-button style="display: block;" color="primary" type="submit">
+                    Iniciar Sesión
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+<ion-grid fixed>
+  <ion-row>
+      <ion-col size="12"><br>
+          <ion-button routerLink="/registrar" style="display: block;" color="primary" type="submit">
+              <ion-text>Registrarse</ion-text>
+          </ion-button>
+      </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
