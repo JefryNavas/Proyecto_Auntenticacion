@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class RegistrarPage implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -16,11 +17,21 @@ export class RegistrarPage implements OnInit {
       firstCtrl: ['Datos Personales', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+      secondCtrl: ['Información Importante', Validators.required],
     });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['Datos de Registro', Validators.required],
+    });
+    
   }
   primer(){
     console.log(this.firstFormGroup.value)
+  }
+  segundo(){
+    console.log(this.secondFormGroup.value)
+  }
+  tercero(){
+    console.log(this.thirdFormGroup.value)
   }
 
 }

@@ -75,8 +75,8 @@
   </mat-stepper>
   <h6>Información Importante</h6>
   <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Fecha de Nacimiento: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Date of Birth" formControlName="firstCtrl" required  type="date" style="color: black;"/>
@@ -86,8 +86,8 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Correo Electrónico: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="E-mail" formControlName="firstCtrl" required tyoe="email" style="color: black;"/>
@@ -98,8 +98,8 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Teléfono: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Phone" formControlName="firstCtrl" required type="tel" style="color: black;"/>
@@ -110,8 +110,8 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Ciudad: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="City" formControlName="firstCtrl" required style="color: black;"/>
@@ -122,8 +122,8 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Dirección: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Address" formControlName="firstCtrl" required style="color: black;"/>
@@ -136,8 +136,8 @@
   </mat-stepper>
   <h6>Datos de Registro</h6>
   <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
         <ng-template matStepLabel>Usuario: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="User" formControlName="firstCtrl" required style="color: black;"/>
@@ -148,7 +148,7 @@
       </form>
     </mat-step>
     <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
         <ng-template matStepLabel>Contraseña: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Password" formControlName="firstCtrl" required  type="password" style="color: black;"/>
@@ -160,7 +160,7 @@
     </form>
     </mat-step>
     <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
         <ng-template matStepLabel>Nombre de la Madre: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Name Mother" formControlName="firstCtrl" required   style="color: black;"/>
@@ -172,7 +172,7 @@
     </form>
     </mat-step>
     <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
         <ng-template matStepLabel>Nombre de la Mascota: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Name Peg" formControlName="firstCtrl" required   style="color: black;"/>
@@ -184,7 +184,7 @@
     </form>
     </mat-step>
     <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
+      <form [formGroup]="firstFormGroup" (submit)="tercero()">
         <ng-template matStepLabel>Fruta Favorita: </ng-template>
         <mat-form-field appearance="fill">
           <input matInput placeholder="Favorite Fruit" formControlName="firstCtrl" required  style="color: black;"/>
