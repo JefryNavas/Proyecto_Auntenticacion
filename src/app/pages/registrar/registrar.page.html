@@ -61,11 +61,11 @@
       <form [formGroup]="firstFormGroup" (submit)="primer()">
         <ng-template matStepLabel>Género: </ng-template>
         <mat-form-field appearance="fill">
-          <select matNativeControl style="color: black;">
-            <option value="" selected></option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-          </select>
+          <mat-select [(value)]="selected">
+            <mat-option value="none">Seleccionar una Opción</mat-option>
+            <mat-option value="masculino">Masculino</mat-option>
+            <mat-option value="femenino">Femenino</mat-option>
+          </mat-select>
         </mat-form-field>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
@@ -78,8 +78,12 @@
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="firstFormGroup" (submit)="segundo()">
         <ng-template matStepLabel>Fecha de Nacimiento: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Date of Birth" formControlName="firstCtrl" required  type="date" style="color: black;"/>
+        <mat-form-field appearance="fill" style="margin-left: -30px">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div>
           <button  mat-raised-button color="primary" matStepperNext>Next</button>
