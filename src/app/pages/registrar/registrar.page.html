@@ -1,250 +1,126 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align: center;">Registro</ion-title>
+    <ion-title style="text-align: center">Registro</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <h6>Datos Personales</h6>
+  <h6>Registro del Usuario</h6>
   <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
-        <ng-template matStepLabel>Apellidos: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Last name" formControlName="firstCtrl" required  style="color: black;"/>
+    <mat-step [stepControl]="datosPersonalesForm">
+      <form [formGroup]="datosPersonalesForm" (submit)="datosPersonalesSubmit()">
+        <ng-template matStepLabel>Datos Personales </ng-template>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Apellidos:</mat-label>
+          <input matInput />
         </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Nombres:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Cédula:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Edad:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Género:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <div class="text-center">
+          <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
-        <ng-template matStepLabel>Nombres: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="First name" formControlName="firstCtrl" required style="color: black;"/>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
-        <ng-template matStepLabel>Cédula: </ng-template>
-        <mat-form-field hintLabel="Max 10 números" appearance="fill">
-          <input matInput #input maxlength="10" placeholder="ID" formControlName="firstCtrl" required style="color: black;"/>
-          <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
-        <ng-template matStepLabel>Edad: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Age" formControlName="firstCtrl" required  type="number" style="color: black;"/>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button  style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="primer()">
-        <ng-template matStepLabel>Género: </ng-template>
-        <mat-form-field appearance="fill">
-          <mat-select [(value)]="selected">
-            <mat-option value="none">Seleccionar una Opción</mat-option>
-            <mat-option value="masculino">Masculino</mat-option>
-            <mat-option value="femenino">Femenino</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        </div>
-      </form>
-    </mat-step>
-  </mat-stepper>
-  <h6>Información Importante</h6>
-  <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="segundo()">
-        <ng-template matStepLabel>Fecha de Nacimiento: </ng-template>
-        <mat-form-field appearance="fill" style="margin-left: -30px">
+    <mat-step [stepControl]="informacionImportanteForm">
+      <form [formGroup]="informacionImportanteForm" (submit)="informacionImportanteSubmit()">
+        <ng-template matStepLabel>Información Importante</ng-template>
+        <mat-form-field class="example-full-width" appearance="legacy">
           <mat-label>Choose a date</mat-label>
-          <input matInput style="color: black;"[matDatepicker]="picker">
+          <input matInput [matDatepicker]="picker" />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div>
-          <button  mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="segundo()">
-        <ng-template matStepLabel>Correo Electrónico: </ng-template>
-        <div class="example-container">
-          <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="example@example.com" [formControl]="email" style="color: black;" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="segundo()">
-        <ng-template matStepLabel>Teléfono: </ng-template>
-        <mat-form-field hintLabel="Max 10 números" appearance="fill">
-          <input matInput #input_phone maxlength="10" placeholder="Phone" formControlName="firstCtrl" required  style="color: black;"/>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="example@example.com" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Max 10 números" class="example-full-width" appearance="legacy">
+          <mat-label>Teléfono:</mat-label>
+          <input matInput #input_phone maxlength="10" />
           <mat-hint align="end">{{input_phone.value?.length || 0}}/10</mat-hint>
         </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="segundo()">
-        <ng-template matStepLabel>Ciudad: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="City" formControlName="firstCtrl" required style="color: black;"/>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Ciudad:</mat-label>
+          <input matInput />
         </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="segundo()">
-        <ng-template matStepLabel>Dirección: </ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <textarea matInput style="color: black;"></textarea>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Dirección:</mat-label>
+          <textarea matInput></textarea>
         </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        </div>
       </form>
+      <div class="text-center">
+        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+        <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="datosDeRegistroForm">
+      <form [formGroup]="datosDeRegistroForm" (submit)="datosDeRegistroSubmit()">
+        <ng-template matStepLabel>Datos de Registro</ng-template>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Usuario:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field hintLabel="Max 12 caracteres" class="example-full-width" appearance="legacy">
+          <mat-label>Contraseña:</mat-label>
+          <input matInput #input_pass maxlength="12" [type]="hide ? 'password' : 'text'">
+          <mat-hint align="end">{{input_pass.value?.length || 0}}/12</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Nombre de la Madre:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Nombre de la Mascota:</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>Fruta Favorita:</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </form>
+      <div class="text-center">
+        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+        <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="metodoDeAuntenticacionForm">
+      <ng-template matStepLabel>Método de Autenticación</ng-template>
+      <form [formGroup]="metodoDeAuntenticacionForm" (submit)="metodoDeAuntenticacionSubmit()">
+        <mat-label style="color: black;">¿Que nombre vas a elegir?</mat-label>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+          <mat-radio-button class="example-radio-button" value="madre">Madre</mat-radio-button>
+          <mat-radio-button class="example-radio-button" value="mascota">Mascota</mat-radio-button>
+          <mat-radio-button class="example-radio-button" value="fruta">Fruta Favorita</mat-radio-button>
+        </mat-radio-group>
+        <mat-label style="color: black;">¿Qué tipo de letras va a escoger?</mat-label>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+          <mat-radio-button class="example-radio-button" value="vocales">Vocales</mat-radio-button>
+          <mat-radio-button class="example-radio-button" value="consonantes">Consonantes</mat-radio-button>
+        </mat-radio-group>
+      </form>
+      <div class="text-center">
+        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
+        <button routerLink="/login" style="margin-left: 10px;" mat-raised-button color="primary">Registrarse</button>
+      </div>
     </mat-step>
   </mat-stepper>
-  <h6>Datos de Registro</h6>
-  <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>Usuario: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="User" formControlName="firstCtrl" required style="color: black;"/>
-        </mat-form-field>
-        <div>
-          <button  mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>Contraseña: </ng-template>
-        <div class="example-container">
-          <mat-form-field  hintLabel="Max 12 caracteres" style="margin-left: -30px;width: 220px;" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput #input_pass maxlength="12" [type]="hide ? 'password' : 'text'" style="color: black;">
-            <mat-hint align="end">{{input_pass.value?.length || 0}}/12</mat-hint>
-            <button style="color: black;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon style="color:black">{{hide ? '*' : '*'}}</mat-icon>
-            </button>
-          </mat-form-field>
-        </div>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-    </form>
-    </mat-step>
-    <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>Nombre de la Madre: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Name Mother" formControlName="firstCtrl" required   style="color: black;"/>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-    </form>
-    </mat-step>
-    <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>Nombre de la Mascota: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Name Peg" formControlName="firstCtrl" required   style="color: black;"/>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button style="margin-left: 10px;" mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-    </form>
-    </mat-step>
-    <mat-step>
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>Fruta Favorita: </ng-template>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="Favorite Fruit" formControlName="firstCtrl" required  style="color: black;"/>
-        </mat-form-field>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        </div>
-    </form>
-    </mat-step>
-  </mat-stepper>
-  <h6>Método de Autenticación</h6>
-  <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>¿Que nombre vas a elegir?: </ng-template>
-        <div>
-          <mat-radio-group>
-            <mat-radio-button style="color: black;" value="madre">Madre</mat-radio-button><br><br>
-            <mat-radio-button style="color: black;" value="mascota">Mascota</mat-radio-button><br><br>
-            <mat-radio-button style="color: black;" value="fruta">Fruta Favorita</mat-radio-button><br><br>
-          </mat-radio-group>
-        </div>
-        <div>
-          <button  mat-raised-button color="primary" matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="firstFormGroup" (submit)="tercero()">
-        <ng-template matStepLabel>¿Qué tipo de letras va a escoger?</ng-template>
-        <div>
-          <mat-radio-group>
-            <mat-radio-button style="color: black;" value="madre">Vocales</mat-radio-button><br><br>
-            <mat-radio-button style="color: black;" value="mascota">Consonantes</mat-radio-button><br><br>
-          </mat-radio-group>
-        </div>
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-          <button routerLink="/login" style="margin-left: 10px;" mat-raised-button color="primary">Registrar</button>
-        </div>
-      </form>
-    </mat-step>
-  </mat-stepper>
-
 </ion-content>

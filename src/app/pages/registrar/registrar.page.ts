@@ -6,9 +6,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  datosPersonalesForm: FormGroup;
+  informacionImportanteForm: FormGroup;
+  datosDeRegistroForm: FormGroup;
+  metodoDeAuntenticacionForm: FormGroup;
   selected = 'none';
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
@@ -24,25 +25,31 @@ export class RegistrarPage implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.datosPersonalesForm = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
     });
-    this.secondFormGroup = this._formBuilder.group({
+    this.informacionImportanteForm = this._formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
-    this.thirdFormGroup = this._formBuilder.group({
+    this.datosDeRegistroForm = this._formBuilder.group({
       thirdCtrl: ['', Validators.required],
+    });
+    this.metodoDeAuntenticacionForm = this._formBuilder.group({
+
     });
     
   }
-  primer(){
-    console.log(this.firstFormGroup.value)
+  datosPersonalesSubmit(){
+    console.log(this.datosPersonalesForm.value)
   }
-  segundo(){
-    console.log(this.secondFormGroup.value)
+  informacionImportanteSubmit(){
+    console.log(this.informacionImportanteForm.value)
   }
-  tercero(){
-    console.log(this.thirdFormGroup.value)
+  datosDeRegistroSubmit(){
+    console.log(this.datosDeRegistroForm.value)
+  }
+  metodoDeAuntenticacionSubmit(){
+    console.log(this.metodoDeAuntenticacionForm.value)
   }
 
 }
