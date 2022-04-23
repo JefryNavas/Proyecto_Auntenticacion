@@ -6,120 +6,149 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
-  <h6>Registro del Usuario</h6>
-  <mat-stepper orientation="vertical" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="datosPersonalesForm">
-      <form [formGroup]="datosPersonalesForm" (submit)="datosPersonalesSubmit()">
-        <ng-template matStepLabel>Datos Personales </ng-template>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Apellidos:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Nombres:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Cédula:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Edad:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Género:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <div class="text-center">
-          <button style="margin-top: 10px;" mat-raised-button color="primary" matStepperNext>Siguiente</button>
+<ion-content>
+  <igx-stepper #stepper orientation="vertical">
+    <ng-template igxStepActiveIndicator>
+      <igx-icon>edit</igx-icon>
+    </ng-template>
+    <ng-template igxStepInvalidIndicator>
+      <igx-icon>error</igx-icon>
+    </ng-template>
+    <ng-template igxStepCompletedIndicator>
+      <igx-icon>check</igx-icon>
+    </ng-template>
+    <igx-step>
+      <span igxStepTitle>Datos Personales</span>
+      <div igxStepContent>
+        <form [formGroup]="datosPersonalesForm">
+          <igx-input-group>
+            <input igxInput name="Apellidos" formControlName="apellidos" type="text" required />
+            <label igxLabel for="Apellidos" id="Apellidos">Apellidos:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="Nombres" formControlName="nombres" type="text" required />
+            <label igxLabel for="Nombres" id="Nombres">Nombres:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="Cedula" formControlName="cedula" type="text" required />
+            <label igxLabel for="Cedula" id="Cedula">Cédula:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="Edad" formControlName="edad" type="text" required />
+            <label igxLabel for="Edad" id="Edad">Edad:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="Genero" formControlName="genero" type="text" required />
+            <label igxLabel for="Genero" id="Genero">Género:</label>
+          </igx-input-group>
+        </form>
+        <div class="sample-step-actions">
+          <button igxButton="raised" (click)="stepper.next()"
+            [disabled]="!datosPersonalesForm.valid"><igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente</button>
         </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="informacionImportanteForm">
-      <form [formGroup]="informacionImportanteForm" (submit)="informacionImportanteSubmit()">
-        <ng-template matStepLabel>Información Importante</ng-template>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="example@example.com" required>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-        <mat-form-field hintLabel="Max 10 números" class="example-full-width" appearance="legacy">
-          <mat-label>Teléfono:</mat-label>
-          <input matInput #input_phone maxlength="10" />
-          <mat-hint align="end">{{input_phone.value?.length || 0}}/10</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Ciudad:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Dirección:</mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
-      </form>
-      <div class="text-center">
-        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
-        <button style="margin-top: 10px;" mat-raised-button color="primary" matStepperNext>Siguiente</button>
       </div>
-    </mat-step>
-    <mat-step [stepControl]="datosDeRegistroForm">
-      <form [formGroup]="datosDeRegistroForm" (submit)="datosDeRegistroSubmit()">
-        <ng-template matStepLabel>Datos de Registro</ng-template>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Usuario:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field hintLabel="Max 12 caracteres" class="example-full-width" appearance="legacy">
-          <mat-label>Contraseña:</mat-label>
-          <input matInput #input_pass maxlength="12" [type]="hide ? 'password' : 'text'">
-          <mat-hint align="end">{{input_pass.value?.length || 0}}/12</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Nombre de la Madre:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Nombre de la Mascota:</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="legacy">
-          <mat-label>Fruta Favorita:</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </form>
-      <div class="text-center">
-        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
-        <button style="margin-top: 10px;" mat-raised-button color="primary" matStepperNext>Siguiente</button>
+    </igx-step>
+    <igx-step [disabled]="!datosPersonalesForm.valid">
+      <span igxStepTitle>Información Importante</span>
+      <div igxStepContent>
+        <form [formGroup]="informacionImportanteForm">
+          <div class="date-picker-wrapper">
+            <igx-date-picker formControlName="fecha">
+              <label igxLabel>Fecha de Nacimiento</label>
+            </igx-date-picker>
+          </div>
+          <igx-input-group>
+            <input igxInput name="email" formControlName="email" type="email" required email />
+            <label igxLabel for="email" id="email">Email:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="telefono" formControlName="telefono" type="text" required maxlength="10" />
+            <label igxLabel for="telefono" id="telefono">Teléfono:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="ciudad" formControlName="ciudad" type="text" required />
+            <label igxLabel for="ciudad" id="ciudad">Ciudad:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <textarea igxInput name="direccion" formControlName="direccion" type="text" required></textarea>
+            <label igxLabel for="direccion" id="direccion">Direccion:</label>
+          </igx-input-group>
+        </form>
+        <div class="sample-step-actions">
+          <button igxButton="raised" (click)="stepper.prev()"><igx-icon class="m-2">keyboard_arrow_left</igx-icon>Regresar</button>
+          <button igxButton="raised" (click)="stepper.next()"
+            [disabled]="!informacionImportanteForm.valid"><igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente</button>
+        </div>
       </div>
-    </mat-step>
-    <mat-step [stepControl]="metodoDeAuntenticacionForm">
-      <ng-template matStepLabel>Método de Autenticación</ng-template>
-      <form [formGroup]="metodoDeAuntenticacionForm" (submit)="metodoDeAuntenticacionSubmit()">
-        <mat-label style="color: black;">¿Que nombre vas a elegir?</mat-label>
-        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-          <mat-radio-button class="example-radio-button" value="madre">Madre</mat-radio-button>
-          <mat-radio-button class="example-radio-button" value="mascota">Mascota</mat-radio-button>
-          <mat-radio-button class="example-radio-button" value="fruta">Fruta Favorita</mat-radio-button>
-        </mat-radio-group>
-        <mat-label style="color: black;">¿Qué tipo de letras va a escoger?</mat-label>
-        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-          <mat-radio-button class="example-radio-button" value="vocales">Vocales</mat-radio-button>
-          <mat-radio-button class="example-radio-button" value="consonantes">Consonantes</mat-radio-button>
-        </mat-radio-group>
-      </form>
-      <div class="text-center">
-        <button mat-raised-button color="primary" matStepperPrevious>Regresar</button>
-        <button routerLink="/login" style="margin-top: 10px;" mat-raised-button color="primary">Registrarse</button>
+    </igx-step>
+    <igx-step [disabled]="!informacionImportanteForm.valid">
+      <span igxStepTitle>Datos de Registro</span>
+      <div igxStepContent>
+        <form [formGroup]="datosDeRegistroForm">
+          <igx-input-group>
+            <input igxInput name="usuario" formControlName="usuario" type="text" required />
+            <label igxLabel for="usuario" id="usuario">Usuario:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="password" formControlName="password" type="password" required />
+            <label igxLabel for="password" id="password">Contraseña:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="madre" formControlName="madre" type="text" required />
+            <label igxLabel for="madre" id="madre">Nombre de la Madre:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="mascota" formControlName="mascota" type="text" required />
+            <label igxLabel for="mascota" id="mascota">Nombre de la Mascota:</label>
+          </igx-input-group>
+          <igx-input-group>
+            <input igxInput name="fruta" formControlName="fruta" type="text" required />
+            <label igxLabel for="fruta" id="fruta">Fruta Favorita:</label>
+          </igx-input-group>
+        </form>
+        <div class="sample-step-actions">
+          <button igxButton="raised" (click)="stepper.prev()"><igx-icon class="m-2">keyboard_arrow_left</igx-icon> Regresar</button>
+          <button igxButton="raised" (click)="stepper.next()"
+            [disabled]="!datosDeRegistroForm.valid"><igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente</button>
+        </div>
       </div>
-    </mat-step>
-  </mat-stepper>
+    </igx-step>
+    <igx-step [disabled]="!datosDeRegistroForm.valid">
+      <span igxStepTitle>Método de Autenticación</span>
+      <div igxStepContent>
+        <form [formGroup]="metodoDeAuntenticacionForm">
+          <p class="text-dark m-2">¿Que nombre vas a elegir?</p>
+          <igx-radio-group [alignment]="alignment" formControlName="eleccion1">
+            <igx-radio value="madre">Madre</igx-radio>
+            <igx-radio value="mascota">Mascota</igx-radio>
+            <igx-radio value="fruta">Fruta Favorita</igx-radio>
+          </igx-radio-group>
+          <p class="text-dark m-2">¿Qué tipo de letras va a escoger?</p>
+          <igx-radio-group [alignment]="alignment" formControlName="eleccion2">
+            <igx-radio value="vocales">Vocales</igx-radio>
+            <igx-radio value="consonantes">Consonantes</igx-radio>
+          </igx-radio-group>
+        </form>
+        <div class="d-grid gap-2 button-sample">
+          <button igxButton="raised" (click)="submit()"><igx-icon class="m-2">save</igx-icon> Registrarse</button>
+        </div>
+        <div class="row">
+          <div class="d-grid gap-2 col-6">
+            <button igxButton="raised" (click)="stepper.prev()"><igx-icon class="m-2">keyboard_arrow_left</igx-icon> Regresar</button>
+          </div>
+          <div class="d-grid gap-2 col-6">
+            <button igxButton="raised" (click)="reset()"><igx-icon class="m-2">cancel</igx-icon>Cancelar</button>
+          </div>
+        </div>
+        <div class="button-sample">
+
+
+        </div>
+        <div class="sample-step-actions">
+
+
+        </div>
+      </div>
+    </igx-step>
+  </igx-stepper>
 </ion-content>

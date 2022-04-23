@@ -1,3 +1,13 @@
+// Import the theming module
+@use "igniteui-angular/theming" as *;
+
+@include core();
+// Add the typography styles before the main theme.
+@include typography();
+
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@include core();
+@include indigo-light-theme($light-indigo-palette);
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -10,6 +20,7 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+@import "~material-design-icons/iconfont/material-icons.css";
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -24,4 +35,4 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+

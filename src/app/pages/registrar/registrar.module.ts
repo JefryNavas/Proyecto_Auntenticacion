@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegistrarPage } from './registrar.page';
+
+import { IonicModule } from '@ionic/angular';
+
 import { RegistrarPageRoutingModule } from './registrar-routing.module';
-import { MaterialModule } from '../../material/material.module';
+
+import { RegistrarPage } from './registrar.page';
+import { ThemeModule } from '../../theme/theme.module';
 
 @NgModule({
   imports: [
@@ -13,8 +16,8 @@ import { MaterialModule } from '../../material/material.module';
     ReactiveFormsModule,
     IonicModule,
     RegistrarPageRoutingModule,
-    MaterialModule
+    ThemeModule
   ],
   declarations: [RegistrarPage]
 })
-export class RegistrarPageModule { }
+export class RegistrarPageModule {}

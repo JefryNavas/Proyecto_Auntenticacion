@@ -1,55 +1,68 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  IgxStepperComponent, RadioGroupAlignment } from 'igniteui-angular';
+
 @Component({
   selector: 'app-registrar',
-  templateUrl: 'registrar.page.html',
-  styleUrls: ['registrar.page.scss'],
+  templateUrl: './registrar.page.html',
+  styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
+
+  public alignment = RadioGroupAlignment.vertical;
+
+  public date = new Date();
+  @ViewChild('stepper', { static: true })
+  public stepper: IgxStepperComponent;
+
   datosPersonalesForm: FormGroup;
   informacionImportanteForm: FormGroup;
   datosDeRegistroForm: FormGroup;
   metodoDeAuntenticacionForm: FormGroup;
-  selected = 'none';
-  email = new FormControl('', [Validators.required, Validators.email]);
-  hide = true;
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Debe ingresar un valor';
-    }
-
-    return this.email.hasError('email') ? 'Email No Válido' : '';
-  }
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.datosPersonalesForm = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      nombres: ['', Validators.required],
+      cedula: ['', Validators.required],
+      edad: ['', Validators.required],
+      genero: ['', Validators.required],
     });
     this.informacionImportanteForm = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+      fecha: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      telefono: ['', [Validators.required]],
+      ciudad: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
     });
     this.datosDeRegistroForm = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required],
+      usuario: ['', Validators.required],
+      password: ['', Validators.required],
+      madre: ['', Validators.required],
+      mascota: ['', Validators.required],
+      fruta: ['', Validators.required],
     });
     this.metodoDeAuntenticacionForm = this._formBuilder.group({
-
+      eleccion1: ['', Validators.required],
+      eleccion2: ['', Validators.required],
     });
     
   }
-  datosPersonalesSubmit(){
+  submit(){
     console.log(this.datosPersonalesForm.value)
-  }
-  informacionImportanteSubmit(){
     console.log(this.informacionImportanteForm.value)
-  }
-  datosDeRegistroSubmit(){
     console.log(this.datosDeRegistroForm.value)
-  }
-  metodoDeAuntenticacionSubmit(){
     console.log(this.metodoDeAuntenticacionForm.value)
   }
 
+  reset(){
+    
+    this.datosPersonalesForm.reset()
+    this.informacionImportanteForm.reset()
+    this.datosDeRegistroForm.reset()
+    this.metodoDeAuntenticacionForm.reset()
+    this.stepper.reset()
+  }
 }

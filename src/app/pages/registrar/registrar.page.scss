@@ -1,19 +1,25 @@
-.example-full-width {
-  width: 100%;
-}
-mat-radio-button,
-textarea,
-input{
-   color: black;
+$sample-gap: 0px;
+.sample-split,
+.sample-step-actions {
+	display: flex;
+	gap: $sample-gap;
 }
 
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  align-items: flex-start;
+.sample-split {
+	> * {
+		max-width: 380px;
+		flex: 1;
+	}
+	margin-bottom: $sample-gap;
 }
 
-.example-radio-button {
-  margin: 5px;
+button{
+	margin: 10px;
+}
+.datе-picker-wrapper {
+    padding: 1rem;
+    max-width: 600px;
+}
+.button-sample {
+    margin: 15px;
 }
