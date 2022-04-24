@@ -10,6 +10,7 @@ import {  IgxStepperComponent, RadioGroupAlignment } from 'igniteui-angular';
 export class RegistrarPage implements OnInit {
 
   public alignment = RadioGroupAlignment.vertical;
+  public items: string[] = ['Maculino', 'Femenino'];
 
   public date = new Date();
   @ViewChild('stepper', { static: true })
