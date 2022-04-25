@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Autenticación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="title">
+      <h1>Hola Username </h1>
+    </div>
+    <div class="row">
+      <div class="col-4 choice py-2" *ngFor="let dato of data">
+        <img class="grow-in" [src]="dato.img" />
+      </div>
+    </div>
+    <p class="text-secondary m-2">Pista: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia suscipit amet
+      doloribus voluptatem ipsa modi itaque quae veniam perferendis delectus nisi soluta nostrum illo, ducimus deserunt
+      incidunt? Cumque, officia iusto.</p>
+  </div>
+</ion-content>

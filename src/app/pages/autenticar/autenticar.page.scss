@@ -1,0 +1,33 @@
+.title {
+    width: 100%;
+    background: white;
+    color: #110F26;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.choice img:hover{
+	cursor: pointer;
+}
+
+.choice img:active{
+    background-color:#60d2d6;
+}
+
+.choice img {
+    width: 100px !important;
+    height: 100%;
+    background-color: white;
+    padding: 10px;
+    border: 4px solid #333333;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+/*Grow In*/
+img.grow-in:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
