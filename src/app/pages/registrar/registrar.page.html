@@ -30,17 +30,20 @@
             <label igxLabel for="Nombres" id="Nombres">Nombres:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="Cedula" formControlName="cedula" type="text" required />
+            <input igxInput maxlength="10" name="Cedula" formControlName="cedula" type="text" required />
             <label igxLabel for="Cedula" id="Cedula">Cédula:</label>
+            <igx-hint position="start">Máx. 10 digitos</igx-hint>
           </igx-input-group>
           <igx-input-group>
             <input igxInput name="Edad" formControlName="edad" type="text" required />
             <label igxLabel for="Edad" id="Edad">Edad:</label>
           </igx-input-group>
-          <igx-input-group>
-            <input igxInput name="Genero" formControlName="genero" type="text" required />
-            <label igxLabel for="Genero" id="Genero">Género:</label>
-          </igx-input-group>
+          <igx-select formControlName="genero" #select>
+            <label igxLabel>Género</label>
+            <igx-select-item *ngFor="let item of items" [value]="item">
+                {{item}}
+            </igx-select-item>
+        </igx-select>
         </form>
         <div class="sample-step-actions">
           <button igxButton="raised" (click)="stepper.next()"
@@ -60,10 +63,12 @@
           <igx-input-group>
             <input igxInput name="email" formControlName="email" type="email" required email />
             <label igxLabel for="email" id="email">Email:</label>
+            <igx-hint position="start">Ex: example@example.com</igx-hint>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="telefono" formControlName="telefono" type="text" required maxlength="10" />
+            <input igxInput name="telefono" formControlName="telefono" type="tel" required maxlength="10" />
             <label igxLabel for="telefono" id="telefono">Teléfono:</label>
+            <igx-hint position="start">Máx. 10 números</igx-hint>
           </igx-input-group>
           <igx-input-group>
             <input igxInput name="ciudad" formControlName="ciudad" type="text" required />
@@ -130,7 +135,7 @@
           </igx-radio-group>
         </form>
         <div class="d-grid gap-2 button-sample">
-          <button igxButton="raised" (click)="submit()"><igx-icon class="m-2">save</igx-icon> Registrarse</button>
+          <button routerLink="/login" igxButton="raised" (click)="submit()"><igx-icon class="m-2">save</igx-icon> Registrarse</button>
         </div>
         <div class="row">
           <div class="d-grid gap-2 col-6">
