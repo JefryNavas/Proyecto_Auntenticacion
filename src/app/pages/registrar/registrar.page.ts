@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import {  IgxStepperComponent, RadioGroupAlignment } from 'igniteui-angular';
+import { name_ciudades } from './ciudades';
 
 @Component({
   selector: 'app-registrar',
@@ -11,6 +12,8 @@ export class RegistrarPage implements OnInit {
 
   public alignment = RadioGroupAlignment.vertical;
   public items: string[] = ['Maculino', 'Femenino'];
+  public items2 = name_ciudades
+  
 
   public date = new Date();
   @ViewChild('stepper', { static: true })
@@ -34,7 +37,7 @@ export class RegistrarPage implements OnInit {
     this.informacionImportanteForm = this._formBuilder.group({
       fecha: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
+      movil: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
     });
