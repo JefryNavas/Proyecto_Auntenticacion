@@ -17,6 +17,7 @@ import { HammerModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [],
   imports: [
+    CommonModule
   ],
   exports: [
     IgxStepperModule,

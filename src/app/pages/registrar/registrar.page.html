@@ -22,32 +22,43 @@
       <div igxStepContent>
         <form [formGroup]="datosPersonalesForm">
           <igx-input-group>
-            <input id="last_name" igxInput name="Apellidos" formControlName="apellidos" type="text" required pattern="[a-zA-Z ]{2,50}" />
-            <label igxLabel for="Apellidos" id="Apellidos">Apellidos:</label>
+            <igx-suffix>
+              <igx-icon>person</igx-icon>
+            </igx-suffix>
+            <input igxInput name="Apellidos" formControlName="apellidos" type="text" required
+              pattern="[a-zA-Z ]{2,50}" />
+            <label igxLabel for="Apellidos">Apellidos:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="Nombres" formControlName="nombres" type="text" required pattern="[a-zA-Z ]{2,50}"/>
-            <label igxLabel for="Nombres" id="Nombres">Nombres:</label>
+            <igx-suffix>
+              <igx-icon>person</igx-icon>
+            </igx-suffix>
+            <label igxLabel for="nombres">Nombres:</label>
+            <input igxInput name="nombres" id="nombres" formControlName="nombres" type="text" required
+              pattern="[a-zA-Z ]{2,50}" />
           </igx-input-group>
           <igx-input-group>
-            <input igxInput maxlength="10" name="Cedula" formControlName="cedula" type="text" required pattern="[0-9]{2,50}" />
+            <input igxInput maxlength="10" name="Cedula" formControlName="cedula" type="text" required
+              pattern="[0-9]{2,50}" />
             <label igxLabel for="Cedula" id="Cedula">Cédula:</label>
             <igx-hint position="start">Máx. 10 digitos</igx-hint>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput maxlength="2" name="Edad" formControlName="edad" type="text" required pattern="[0-9]{1,50}"/>
+            <input igxInput maxlength="2" name="Edad" formControlName="edad" type="text" required
+              pattern="[0-9]{1,50}" />
             <label igxLabel for="Edad" id="Edad">Edad:</label>
           </igx-input-group>
           <igx-select formControlName="genero" #select>
             <label igxLabel>Género</label>
             <igx-select-item *ngFor="let item of items" [value]="item">
-                {{item}}
+              {{item}}
             </igx-select-item>
           </igx-select>
         </form>
         <div class="sample-step-actions">
-          <button igxButton="raised" (click)="stepper.next()"
-            [disabled]="!datosPersonalesForm.valid"><igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente</button>
+          <button igxButton="raised" (click)="stepper.next()" [disabled]="!datosPersonalesForm.valid">
+            <igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente
+          </button>
         </div>
       </div>
     </igx-step>
@@ -61,30 +72,44 @@
             </igx-date-picker>
           </div>
           <igx-input-group>
+            <igx-suffix>
+              <igx-icon>email</igx-icon>
+            </igx-suffix>
             <input igxInput name="email" formControlName="email" type="email" required email />
             <label igxLabel for="email" id="email">Email:</label>
             <igx-hint position="start">Ex: example@example.com</igx-hint>
           </igx-input-group>
           <igx-input-group>
+            <igx-suffix>
+              <igx-icon>phone</igx-icon>
+            </igx-suffix>
             <igx-prefix>+593</igx-prefix>
-            <input igxInput name="movil" formControlName="movil" type="text" required maxlength="9" pattern="[0-9]{1,50}"/>
+            <input igxInput name="movil" formControlName="movil" type="text" required maxlength="9"
+              pattern="[0-9]{1,50}" />
             <label igxLabel for="movil" id="telefono">Móvil:</label>
           </igx-input-group>
           <igx-select formControlName="ciudad" #select>
             <label igxLabel>Ciudad</label>
             <igx-select-item *ngFor="let item of items2" [value]="item">
-                {{item}}
+              {{item}}
             </igx-select-item>
           </igx-select>
           <igx-input-group>
-            <textarea igxInput name="direccion" formControlName="direccion" type="text" required pattern="[a-zA-Z ]{2,100}"></textarea>
+            <igx-suffix>
+              <igx-icon>directions</igx-icon>
+            </igx-suffix>
+            <textarea igxInput name="direccion" formControlName="direccion" type="text" required
+              pattern="[a-zA-Z ]{2,100}"></textarea>
             <label igxLabel for="direccion" id="direccion">Direccion:</label>
           </igx-input-group>
         </form>
         <div class="sample-step-actions">
-          <button igxButton="raised" (click)="stepper.prev()"><igx-icon class="m-2">keyboard_arrow_left</igx-icon>Regresar</button>
-          <button igxButton="raised" (click)="stepper.next()"
-            [disabled]="!informacionImportanteForm.valid"><igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente</button>
+          <button igxButton="raised" (click)="stepper.prev()">
+            <igx-icon class="m-2">keyboard_arrow_left</igx-icon>Regresar
+          </button>
+          <button igxButton="raised" (click)="stepper.next()" [disabled]="!informacionImportanteForm.valid">
+            <igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente
+          </button>
         </div>
       </div>
     </igx-step>
@@ -93,19 +118,29 @@
       <div igxStepContent>
         <form [formGroup]="datosDeRegistroForm">
           <igx-input-group>
+            <igx-suffix>
+              <igx-icon>person</igx-icon>
+            </igx-suffix>
             <input igxInput name="usuario" formControlName="usuario" type="text" required />
             <label igxLabel for="usuario" id="usuario">Usuario:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="password" formControlName="password" type="password" required minlength="8" maxlength="12" />
+            <igx-suffix>
+              <igx-icon>lock</igx-icon>
+            </igx-suffix>
+            <input igxInput name="password" formControlName="password" type="password" required minlength="8"
+              maxlength="12" />
             <label igxLabel for="password" id="password">Contraseña:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="madre" formControlName="madre" type="text" required pattern="[a-zA-Z ]{2,50}"/>
+            <input igxInput name="madre" formControlName="madre" type="text" required pattern="[a-zA-Z ]{2,50}" />
             <label igxLabel for="madre" id="madre">Nombre de la Madre:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="mascota" formControlName="mascota" type="text" required pattern="[a-zA-Z ]{2,50}"/>
+            <igx-suffix>
+              <igx-icon>pets</igx-icon>
+            </igx-suffix>
+            <input igxInput name="mascota" formControlName="mascota" type="text" required pattern="[a-zA-Z ]{2,50}" />
             <label igxLabel for="mascota" id="mascota">Nombre de la Mascota:</label>
           </igx-input-group>
           <igx-input-group>
@@ -114,9 +149,12 @@
           </igx-input-group>
         </form>
         <div class="sample-step-actions">
-          <button igxButton="raised" (click)="stepper.prev()"><igx-icon class="m-2">keyboard_arrow_left</igx-icon> Regresar</button>
-          <button igxButton="raised" (click)="stepper.next()"
-            [disabled]="!datosDeRegistroForm.valid"><igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente</button>
+          <button igxButton="raised" (click)="stepper.prev()">
+            <igx-icon class="m-2">keyboard_arrow_left</igx-icon> Regresar
+          </button>
+          <button igxButton="raised" (click)="stepper.next()" [disabled]="!datosDeRegistroForm.valid">
+            <igx-icon class="m-2">keyboard_arrow_right</igx-icon>Siguiente
+          </button>
         </div>
       </div>
     </igx-step>
@@ -137,14 +175,21 @@
           </igx-radio-group>
         </form>
         <div class="d-grid gap-2 button-sample">
-          <button routerLink="/login" igxButton="raised" (click)="submit()" [disabled]="!metodoDeAuntenticacionForm.valid"><igx-icon class="m-2">save</igx-icon> Registrarse</button>
+          <button routerLink="/login" igxButton="raised" (click)="submit()"
+            [disabled]="!metodoDeAuntenticacionForm.valid">
+            <igx-icon class="m-2">save</igx-icon> Registrarse
+          </button>
         </div>
         <div class="row">
           <div class="d-grid gap-2 col-6">
-            <button igxButton="raised" (click)="stepper.prev()"><igx-icon class="m-2">keyboard_arrow_left</igx-icon> Regresar</button>
+            <button igxButton="raised" (click)="stepper.prev()">
+              <igx-icon class="m-2">keyboard_arrow_left</igx-icon> Regresar
+            </button>
           </div>
           <div class="d-grid gap-2 col-6">
-            <button igxButton="raised" (click)="reset()"><igx-icon class="m-2">cancel</igx-icon>Cancelar</button>
+            <button igxButton="raised" (click)="reset()">
+              <igx-icon class="m-2">cancel</igx-icon>Cancelar
+            </button>
           </div>
         </div>
         <div class="button-sample">
