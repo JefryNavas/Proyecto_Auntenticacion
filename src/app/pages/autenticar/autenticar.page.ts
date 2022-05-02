@@ -16,15 +16,15 @@ export class AutenticarPage implements OnInit {
   data = []
   ngOnInit(): void {
     this.data = [
-      {id: 1, img: 'assets/img/rock.png'},
-      {id: 2, img: 'assets/img/paper.png'},
-      {id: 3, img: 'assets/img/scissors.png'},
-      {id: 4, img: 'assets/img/scissors.png'},
-      {id: 5, img: 'assets/img/scissors.png'},
-      {id: 6, img: 'assets/img/scissors.png'},
-      {id: 7, img: 'assets/img/scissors.png'},
-      {id: 8, img: 'assets/img/scissors.png'},
-      {id: 9, img: 'assets/img/scissors.png'},
+      {id: 1, codigo: 'assets/img/rock.png',tipo:2},
+      {id: 2, codigo: 'assets/img/paper.png',tipo:2},
+      {id: 3, codigo: 'https://i.ibb.co/GRyfNS0/pp.jpg',tipo:3},
+      {id: 4, codigo: 'assets/img/scissors.png',tipo:2},
+      {id: 5, codigo: '#0000FF',tipo:1},
+      {id: 6, codigo: 'assets/img/scissors.png'},
+      {id: 7, codigo: 'assets/img/scissors.png'},
+      {id: 8, codigo: 'assets/img/scissors.png'},
+      {id: 9, codigo: 'assets/img/scissors.png'},
     ]
     this.result = 'Esperando jugada...';
     console.log(this.pointsUser);
