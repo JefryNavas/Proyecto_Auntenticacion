@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AutenticarPageRoutingModule } from './autenticar-routing.module';
 
 import { AutenticarPage } from './autenticar.page';
+import { ThemeModule } from '../../theme/theme.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AutenticarPageRoutingModule
+    AutenticarPageRoutingModule,
+    ThemeModule
   ],
   declarations: [AutenticarPage]
 })

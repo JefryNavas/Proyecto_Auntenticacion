@@ -8,12 +8,9 @@ import { GameService } from './game.service';
 })
 export class AutenticarPage implements OnInit {
 
-  result: string;
-  pointsUser = 0;
-  pointsComp = 0;
-
-  constructor(private playGame: GameService) { }
+  constructor() { }
   data = []
+  seleccionado = []
   ngOnInit(): void {
     this.data = [
       {id: 1, codigo: 'assets/img/rock.png',tipo:2},
@@ -26,16 +23,18 @@ export class AutenticarPage implements OnInit {
       {id: 8, codigo: 'assets/img/scissors.png'},
       {id: 9, codigo: 'assets/img/scissors.png'},
     ]
-    this.result = 'Esperando jugada...';
-    console.log(this.pointsUser);
   }
 
-  play(choice: string): void {
-    const result = this.playGame.game(choice);
-    console.log(result);
-    this.result = result.message;
-    this.pointsUser += result.userAdd;
-    this.pointsComp += result.compAdd;
-  }
+  addSeleccionar(dato:any){
+    if (this.seleccionado.length===4) {
+      console.log('error')
+    } else{
+      this.seleccionado.push(dato)
+    }
+   
 
+  }
+  deleteSeleccionar(){
+    this.seleccionado.pop();
+  }
 }

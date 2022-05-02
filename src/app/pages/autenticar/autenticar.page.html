@@ -6,16 +6,38 @@
 
 <ion-content>
   <div class="container">
-   
-    <div class="row" style="height: 50px;margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);margin: 10px;">
+    <div class="row"
+      style="height: 50px;margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);margin: 10px;">
       <div class="title">
         <h1>Hola Username </h1>
       </div>
     </div>
-    <div class="row" style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);">
+    <div class="container p-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-10 select">
+            <div class="row">
+              <div style="padding: 4px" class="col-3" *ngFor="let dato of seleccionado">
+                <img class="seleccionados" *ngIf="dato.tipo!=1" [src]="dato.codigo"  />
+                <div class="seleccionados" *ngIf="dato.tipo===1" [ngStyle]="{'background': dato.codigo}"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-danger my-2" (click)="deleteSeleccionar()">
+              <igx-icon>delete_forever</igx-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row"
+      style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);">
       <div style="padding: 4px" class="col-4 choice py-2" *ngFor="let dato of data">
-        <img *ngIf="dato.tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in" [src]="dato.codigo" />
-        <div class="colores grow-in" *ngIf="dato.tipo===1" [ngStyle]="{'background': dato.codigo}" ></div>
+        <img *ngIf="dato.tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in"
+          [src]="dato.codigo" (click)="addSeleccionar(dato)" />
+        <div class="colores grow-in" *ngIf="dato.tipo===1" [ngStyle]="{'background': dato.codigo}" (click)="addSeleccionar(dato)"></div>
       </div>
     </div>
     <p class="text-secondary m-2">Pista: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia suscipit amet
