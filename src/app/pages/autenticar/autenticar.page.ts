@@ -21,7 +21,7 @@ export class AutenticarPage implements OnInit {
       {id: 3, codigo: 'https://i.ibb.co/GRyfNS0/pp.jpg',tipo:3},
       {id: 4, codigo: 'assets/img/scissors.png',tipo:2},
       {id: 5, codigo: '#0000FF',tipo:1},
-      {id: 6, codigo: 'assets/img/scissors.png'},
+      {id: 6, codigo: 'https://i.ibb.co/cYWL6bh/Aguacate.jpg',tipo:2},
       {id: 7, codigo: 'assets/img/scissors.png'},
       {id: 8, codigo: 'assets/img/scissors.png'},
       {id: 9, codigo: 'assets/img/scissors.png'},
