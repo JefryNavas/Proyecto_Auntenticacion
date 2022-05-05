@@ -12,20 +12,20 @@
         <h1>Hola Username </h1>
       </div>
     </div>
-    <div class="container p-2">
+    <div class="container p-2" style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(79, 90, 185)">
       <div class="container">
-        <div class="row">
-          <div class="col-10 select">
-            <div class="row">
+        <div class="row" >
+          <div class="col-10 select" style="background-color:rgb(255, 255, 255)">
+            <div class="row" >
               <div style="padding: 4px" class="col-3" *ngFor="let dato of seleccionado">
                 <img class="seleccionados" *ngIf="dato.tipo!=1" [src]="dato.codigo"  />
                 <div class="seleccionados" *ngIf="dato.tipo===1" [ngStyle]="{'background': dato.codigo}"></div>
               </div>
             </div>
           </div>
-          <div class="col-2">
+          <div class="col-2" style="margin-left: -5px;">
             <button class="btn btn-danger my-2" (click)="deleteSeleccionar()">
-              <igx-icon>delete_forever</igx-icon>
+              <igx-icon style="width: 0px;margin-left: -24px;">delete_forever</igx-icon>
             </button>
           </div>
         </div>
