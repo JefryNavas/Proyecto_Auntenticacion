@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
+  
 
   public alignment = RadioGroupAlignment.vertical;
   public items = [{id: 1,nombre: 'Masculino'},{id:2 ,nombre: 'Femenino'}];
@@ -23,6 +24,9 @@ export class RegistrarPage implements OnInit {
 
   @ViewChild('alert', { static: true })
   public alert: IgxDialogComponent;
+
+  @ViewChild('alert2', { static: true })
+  public alert2: IgxDialogComponent;
 
   datosPersonalesForm: FormGroup;
   informacionImportanteForm: FormGroup;
@@ -86,6 +90,8 @@ export class RegistrarPage implements OnInit {
     this.consultaService.registrarUsuario(body).subscribe((data:any)=>{
       if (data.estado) {
         this.alert.open();
+      }else{
+        this.alert2.close();
       }
     })
 
@@ -100,5 +106,8 @@ export class RegistrarPage implements OnInit {
   }
   close(){
     this.router.navigate(['/login'])
+  }
+  errorClose(){
+    this.alert2.close();
   }
 }
