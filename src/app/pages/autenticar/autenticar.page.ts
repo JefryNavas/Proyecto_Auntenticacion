@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { GameService } from './game.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-autenticar',
@@ -8,10 +8,17 @@ import { GameService } from './game.service';
 })
 export class AutenticarPage implements OnInit {
 
+  @ViewChild('alert', { static: true })
+  public alert: IgxDialogComponent;
+
+  usuario: any
+
   constructor() { }
   data = []
   seleccionado = []
   ngOnInit(): void {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'))
+
     this.data = [
       {id: 1, codigo: 'assets/img/rock.png',tipo:2},
       {id: 2, codigo: 'assets/img/paper.png',tipo:2},
@@ -29,12 +36,20 @@ export class AutenticarPage implements OnInit {
     if (this.seleccionado.length===4) {
       console.log('error')
     } else{
-      this.seleccionado.push(dato)
+      let repetido = this.seleccionado.find(val=> val.id === dato.id)
+      if (!repetido) {
+        this.seleccionado.push(dato)
+      }else{
+        this.alert.open()
+      }
     }
    
 
   }
   deleteSeleccionar(){
     this.seleccionado.pop();
+  }
+  close(){
+    this.alert.close();
   }
 }

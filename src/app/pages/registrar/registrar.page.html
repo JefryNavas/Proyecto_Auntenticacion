@@ -50,8 +50,8 @@
           </igx-input-group>
           <igx-select formControlName="genero" #select>
             <label igxLabel>Género</label>
-            <igx-select-item *ngFor="let item of items" [value]="item">
-              {{item}}
+            <igx-select-item *ngFor="let item of items" [value]="item.id">
+              {{item.nombre}}
             </igx-select-item>
           </igx-select>
         </form>
@@ -175,7 +175,7 @@
           </igx-radio-group>
         </form>
         <div class="d-grid gap-2 button-sample">
-          <button routerLink="/login" igxButton="raised" (click)="submit()"
+          <button igxButton="raised" (click)="submit()"
             [disabled]="!metodoDeAuntenticacionForm.valid">
             <igx-icon class="m-2">save</igx-icon> Registrarse
           </button>
@@ -193,14 +193,13 @@
           </div>
         </div>
         <div class="button-sample">
-
-
         </div>
         <div class="sample-step-actions">
-
-
         </div>
       </div>
     </igx-step>
   </igx-stepper>
+  <igx-dialog #alert title="Notificación" message="El usuario se registro correctamente" leftButtonLabel="Aceptar"
+    (leftButtonSelect)="close()">
+  </igx-dialog>
 </ion-content>

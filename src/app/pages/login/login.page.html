@@ -11,22 +11,28 @@
     <img src="../../assets/img/logo.png" width="40%" alt="">
   </div>
   <div class="density-chooser">
-    <form>
+    <form [formGroup]="form">
       <igx-input-group>
-        <input igxInput name="email" type="text" />
+        <input igxInput formControlName="usuario" name="email" type="text" />
         <label igxLabel for="email">Email</label>
       </igx-input-group>
       <igx-input-group>
-        <input igxInput name="password" type="password" />
+        <input igxInput formControlName="password" name="password" type="password" />
         <label igxLabel for="password">Contraseña</label>
       </igx-input-group>
-
-      <div class="d-grid gap-2 button-sample">
-        <button routerLink="/autenticar" igxButton="raised" class="btn">INICIAR SESION</button>
-      </div>
     </form>
+      <div class="d-grid gap-2 button-sample">
+        <button (click)="login()" [disabled]="form.invalid" igxButton="raised" class="btn">INICIAR SESION</button>
+      </div>
+   
     <div class="d-grid gap-2 button-sample">
       <button routerLink="/registrar" class="btn" igxButton="raised">REGISTRARSE</button>
     </div>
   </div>
+  <igx-dialog #alert
+  title="Notificación"
+  message="Usuario o Contraseña inválidos"
+  leftButtonLabel="Aceptar"
+  (leftButtonSelect)="close()">
+</igx-dialog>
 </ion-content>

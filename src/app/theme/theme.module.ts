@@ -12,6 +12,7 @@ import {
   IgxRadioModule,
   IgxStepperModule,
   IgxTextSelectionModule,
+  IgxDialogModule,
 } from 'igniteui-angular';
 import { HammerModule } from '@angular/platform-browser';
 @NgModule({
@@ -31,7 +32,8 @@ import { HammerModule } from '@angular/platform-browser';
     IgxIconModule,
     IgxRadioModule,
     IgxDatePickerModule,
-    HammerModule
+    HammerModule,
+    IgxDialogModule
   ],
 })
 export class ThemeModule {}

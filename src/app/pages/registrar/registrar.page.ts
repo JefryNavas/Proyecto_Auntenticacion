@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {  IgxStepperComponent, RadioGroupAlignment } from 'igniteui-angular';
+import {  IgxDialogComponent, IgxStepperComponent, RadioGroupAlignment } from 'igniteui-angular';
 import { name_ciudades } from './ciudades';
+import { ConsultasService } from '../services/consultas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
@@ -11,7 +13,7 @@ import { name_ciudades } from './ciudades';
 export class RegistrarPage implements OnInit {
 
   public alignment = RadioGroupAlignment.vertical;
-  public items: string[] = ['Maculino', 'Femenino'];
+  public items = [{id: 1,nombre: 'Masculino'},{id:2 ,nombre: 'Femenino'}];
   public items2 = name_ciudades
   
 
@@ -19,12 +21,18 @@ export class RegistrarPage implements OnInit {
   @ViewChild('stepper', { static: true })
   public stepper: IgxStepperComponent;
 
+  @ViewChild('alert', { static: true })
+  public alert: IgxDialogComponent;
+
   datosPersonalesForm: FormGroup;
   informacionImportanteForm: FormGroup;
   datosDeRegistroForm: FormGroup;
   metodoDeAuntenticacionForm: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private consultaService: ConsultasService,
+    private router: Router) {}
 
   ngOnInit() {
     this.datosPersonalesForm = this._formBuilder.group({
@@ -55,18 +63,42 @@ export class RegistrarPage implements OnInit {
     
   }
   submit(){
-    console.log(this.datosPersonalesForm.value)
-    console.log(this.informacionImportanteForm.value)
-    console.log(this.datosDeRegistroForm.value)
+/*     console.log(this.datosDeRegistroForm.value)
     console.log(this.metodoDeAuntenticacionForm.value)
+     */
+    let body = {
+      apellidos: this.datosPersonalesForm.value.apellidos,
+      nombres: this.datosPersonalesForm.value.nombres,
+      cedula: this.datosPersonalesForm.value.cedula,
+      edad: this.datosPersonalesForm.value.edad,
+      genero: this.datosPersonalesForm.value.genero,
+      fecha: this.informacionImportanteForm.value.fecha,
+      email: this.informacionImportanteForm.value.email,
+      movil: this.informacionImportanteForm.value.movil,
+      ciudad: this.informacionImportanteForm.value.ciudad,
+      direccion: this.informacionImportanteForm.value.direccion,
+      usuario: this.datosDeRegistroForm.value.usuario,
+      password: this.datosDeRegistroForm.value.password,
+
+     /*  tipo_palabra:  */
+    }
+
+    this.consultaService.registrarUsuario(body).subscribe((data:any)=>{
+      if (data.estado) {
+        this.alert.open();
+      }
+    })
+
   }
 
   reset(){
-    
     this.datosPersonalesForm.reset()
     this.informacionImportanteForm.reset()
     this.datosDeRegistroForm.reset()
     this.metodoDeAuntenticacionForm.reset()
     this.stepper.reset()
+  }
+  close(){
+    this.router.navigate(['/login'])
   }
 }

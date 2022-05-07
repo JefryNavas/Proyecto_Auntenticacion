@@ -8,8 +8,8 @@
   <div class="container">
     <div class="row"
       style="height: 50px;margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);margin: 10px;">
-      <div class="title">
-        <h1>Hola Username </h1>
+      <div class="title p-2">
+        <h5>Hola {{usuario.nombres}} {{usuario.apellidos}} </h5>
       </div>
     </div>
     <div class="container p-2" style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(79, 90, 185)">
@@ -44,4 +44,11 @@
       doloribus voluptatem ipsa modi itaque quae veniam perferendis delectus nisi soluta nostrum illo, ducimus deserunt
       incidunt? Cumque, officia iusto.</p>
   </div>
+
+  <igx-dialog #alert
+  title="Notificación"
+  message="No se puede seleccionar repetidos"
+  leftButtonLabel="Aceptar"
+  (leftButtonSelect)="close()">
+</igx-dialog>
 </ion-content>
