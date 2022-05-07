@@ -70,6 +70,17 @@ export class RegistrarPage implements OnInit {
 /*     console.log(this.datosDeRegistroForm.value)
     console.log(this.metodoDeAuntenticacionForm.value)
      */
+    let resp;
+
+    let eleccion = this.metodoDeAuntenticacionForm.value.eleccion1
+    if (eleccion === '1') {
+      resp = this.datosDeRegistroForm.value.madre
+    }else if(eleccion === '2'){
+      resp = this.datosDeRegistroForm.value.mascota
+    }else{
+      resp = this.datosDeRegistroForm.value.fruta
+    }
+
     let body = {
       apellidos: this.datosPersonalesForm.value.apellidos,
       nombres: this.datosPersonalesForm.value.nombres,
@@ -83,10 +94,11 @@ export class RegistrarPage implements OnInit {
       direccion: this.informacionImportanteForm.value.direccion,
       usuario: this.datosDeRegistroForm.value.usuario,
       password: this.datosDeRegistroForm.value.password,
-
-     /*  tipo_palabra:  */
+      tipo_autenticar: Number(this.metodoDeAuntenticacionForm.value.eleccion1),
+      tipo_letra: this.metodoDeAuntenticacionForm.value.eleccion2,
+      resp,
+      letras: 'qwe'
     }
-
     this.consultaService.registrarUsuario(body).subscribe((data:any)=>{
       if (data.estado) {
         this.alert.open();
