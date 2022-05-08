@@ -7,12 +7,12 @@
 <ion-content>
   <div class="container">
     <div class="row"
-      style="height: 50px;margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);margin: 10px;">
+      style="height: auto;margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);margin: 10px;">
       <div class="title p-2">
         <h5>Hola {{usuario.nombres}} {{usuario.apellidos}} </h5>
       </div>
     </div>
-    <div class="container p-2" style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(79, 90, 185)">
+    <div class="container p-2" style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(100, 108, 163)">
       <div class="container">
         <div class="row" >
           <div class="col-10 select" style="background-color:rgb(255, 255, 255)">
@@ -33,7 +33,7 @@
 
     </div>
     <div class="row"
-      style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(79, 90, 185);">
+      style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);">
       <div style="padding: 4px" class="col-4 choice py-2" *ngFor="let dato of data">
         <img *ngIf="dato.tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in"
           [src]="dato.codigo" (click)="addSeleccionar(dato)" />
