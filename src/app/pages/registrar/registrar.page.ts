@@ -64,7 +64,7 @@ export class RegistrarPage implements OnInit {
       eleccion1: ['', Validators.required],
       eleccion2: ['', Validators.required],
     });
-    
+
   }
   submit(){
 /*     console.log(this.datosDeRegistroForm.value)
@@ -94,10 +94,10 @@ export class RegistrarPage implements OnInit {
       direccion: this.informacionImportanteForm.value.direccion,
       usuario: this.datosDeRegistroForm.value.usuario,
       password: this.datosDeRegistroForm.value.password,
-      tipo_autenticar: Number(this.metodoDeAuntenticacionForm.value.eleccion1),
+      madre: this.datosDeRegistroForm.value.madre,
+      mascota: this.datosDeRegistroForm.value.mascota,
+      fruta: this.datosDeRegistroForm.value.fruta,
       tipo_letra: this.metodoDeAuntenticacionForm.value.eleccion2,
-      resp,
-      letras: 'qwe'
     }
     this.consultaService.registrarUsuario(body).subscribe((data:any)=>{
       if (data.estado) {

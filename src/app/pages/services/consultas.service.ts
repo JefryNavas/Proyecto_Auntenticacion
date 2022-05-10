@@ -19,7 +19,8 @@ export class ConsultasService {
 
   getUsuarios(){
     return this.http.get(`${this.url}users`);
-
-   
+  }
+  getData(usuario){
+    return this.http.get(`${this.url}datos/${usuario}`);
   }
 }
