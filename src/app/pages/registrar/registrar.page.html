@@ -26,7 +26,7 @@
               <igx-icon>person</igx-icon>
             </igx-suffix>
             <input igxInput name="Apellidos" formControlName="apellidos" type="text" required
-              pattern="[a-zA-Z ]{2,50}" />
+              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="Apellidos">Apellidos:</label>
           </igx-input-group>
           <igx-input-group>
@@ -35,7 +35,7 @@
             </igx-suffix>
             <label igxLabel for="nombres">Nombres:</label>
             <input igxInput name="nombres" id="nombres" formControlName="nombres" type="text" required
-              pattern="[a-zA-Z ]{2,50}" />
+              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
           </igx-input-group>
           <igx-input-group>
             <input igxInput maxlength="10" name="Cedula" formControlName="cedula" type="text" required
@@ -75,7 +75,7 @@
             <igx-suffix>
               <igx-icon>email</igx-icon>
             </igx-suffix>
-            <input igxInput name="email" formControlName="email" type="email" required email />
+            <input igxInput name="email" formControlName="email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
             <label igxLabel for="email" id="email">Email:</label>
             <igx-hint position="start">Ex: example@example.com</igx-hint>
           </igx-input-group>
@@ -99,7 +99,7 @@
               <igx-icon>directions</igx-icon>
             </igx-suffix>
             <textarea igxInput name="direccion" formControlName="direccion" type="text" required
-              pattern="[a-zA-Z ]{2,100}"></textarea>
+              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9-.()\s]+"></textarea>
             <label igxLabel for="direccion" id="direccion">Direccion:</label>
           </igx-input-group>
         </form>
@@ -129,22 +129,22 @@
               <igx-icon>lock</igx-icon>
             </igx-suffix>
             <input igxInput name="password" formControlName="password" type="password" required minlength="8"
-              maxlength="12" />
+              maxlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
             <label igxLabel for="password" id="password">Contraseña:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="madre" formControlName="madre" type="text" required pattern="[a-zA-Z ]{2,50}" />
+            <input igxInput name="madre" formControlName="madre" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="madre" id="madre">Nombre de la Madre:</label>
           </igx-input-group>
           <igx-input-group>
             <igx-suffix>
               <igx-icon>pets</igx-icon>
             </igx-suffix>
-            <input igxInput name="mascota" formControlName="mascota" type="text" required pattern="[a-zA-Z ]{2,50}" />
+            <input igxInput name="mascota" formControlName="mascota" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="mascota" id="mascota">Nombre de la Mascota:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="fruta" formControlName="fruta" type="text" required pattern="[a-zA-Z ]{2,50}" />
+            <input igxInput name="fruta" formControlName="fruta" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="fruta" id="fruta">Fruta Favorita:</label>
           </igx-input-group>
         </form>
