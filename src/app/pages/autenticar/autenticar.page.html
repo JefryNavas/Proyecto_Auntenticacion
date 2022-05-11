@@ -18,8 +18,8 @@
           <div class="col-10 select" style="background-color:rgb(255, 255, 255)">
             <div class="row" >
               <div style="padding: 4px" class="col-3" *ngFor="let dato of seleccionado">
-                <img class="seleccionados" *ngIf="dato.tipo!=1" [src]="dato.codigo"  />
-                <div class="seleccionados" *ngIf="dato.tipo===1" [ngStyle]="{'background': dato.codigo}"></div>
+                <img class="seleccionados" *ngIf="dato.id_tipo!=1" [src]="dato.codigo"  />
+                <div class="seleccionados" *ngIf="dato.id_tipo===1" [ngStyle]="{'background': dato.codigo}"></div>
               </div>
             </div>
           </div>
@@ -35,14 +35,12 @@
     <div class="row"
       style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);">
       <div style="padding: 4px" class="col-4 choice py-2" *ngFor="let dato of data">
-        <img *ngIf="dato.tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in"
+        <img *ngIf="dato.id_tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in"
           [src]="dato.codigo" (click)="addSeleccionar(dato)" />
-        <div class="colores grow-in" *ngIf="dato.tipo===1" [ngStyle]="{'background': dato.codigo}" (click)="addSeleccionar(dato)"></div>
+        <div class="colores grow-in" *ngIf="dato.id_tipo===1" [ngStyle]="{'background': dato.codigo}" (click)="addSeleccionar(dato)"></div>
       </div>
     </div>
-    <p class="text-secondary m-2">Pista: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia suscipit amet
-      doloribus voluptatem ipsa modi itaque quae veniam perferendis delectus nisi soluta nostrum illo, ducimus deserunt
-      incidunt? Cumque, officia iusto.</p>
+    <p class="text-secondary m-2">Pista: {{pista}}</p>
   </div>
 
   <igx-dialog #alert

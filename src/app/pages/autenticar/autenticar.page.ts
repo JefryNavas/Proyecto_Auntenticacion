@@ -11,36 +11,29 @@ export class AutenticarPage implements OnInit {
 
   @ViewChild('alert', { static: true })
   public alert: IgxDialogComponent;
-
-  usuario: any
-
-  constructor(private consultaService: ConsultasService) { }
   data = []
   seleccionado = []
-  ngOnInit(): void {
+  usuario: any
+  pista:string
+
+  constructor(private consultaService: ConsultasService) {
     this.usuario = JSON.parse(localStorage.getItem('usuario'))
 
-    this.consultaService.getData(JSON.stringify(this.usuario)).subscribe(data=>{
-      console.log(data);
+   }
+
+  ngOnInit(): void {
+    this.consultaService.getData(JSON.stringify(this.usuario)).subscribe((datos:any)=>{
+      this.data = datos.resultado
+      console.log(this.data)
+      this.pista = datos.pista
     })
-    this.data = [
-      {id: 1, codigo: 'https://i.ibb.co/G7dgH8b/Aceituna.jpg',tipo:2},
-      {id: 2, codigo: 'https://i.ibb.co/Kjx6tCZ/serpiente.jpg',tipo:2},
-      {id: 3, codigo: 'https://i.ibb.co/6Y32hjf/loro.png',tipo:3},
-      {id: 4, codigo: 'https://i.ibb.co/wM6VQZB/yoyomo.jpg',tipo:2},
-      {id: 5, codigo: '#0000FF',tipo:1},
-      {id: 6, codigo: 'https://i.ibb.co/cYWL6bh/Aguacate.jpg',tipo:2},
-      {id: 7, codigo: '#354685',tipo:1},
-      {id: 8, codigo: 'https://i.ibb.co/rcjqcR1/Tamarillo.jpg',tipo:2},
-      {id: 9, codigo: '#8D8388',tipo:1},
-    ]
   }
 
   addSeleccionar(dato:any){
     if (this.seleccionado.length===4) {
-      console.log('error')
+      //Validar que todos los seleccionados el estado sea true
     } else{
-      let repetido = this.seleccionado.find(val=> val.id === dato.id)
+      let repetido = this.seleccionado.find(val=> val.auntenticar === dato.auntenticar)
       if (!repetido) {
         this.seleccionado.push(dato)
       }else{
