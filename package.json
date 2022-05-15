@@ -32,6 +32,7 @@
     "igniteui-angular": "^13.1.11",
     "ionic-angular": "^3.9.10",
     "material-design-icons": "^3.0.1",
+    "ngx-loading": "^13.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

@@ -12,13 +12,14 @@
         <h5>Hola {{usuario.nombres}} {{usuario.apellidos}} </h5>
       </div>
     </div>
-    <div class="container p-2" style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(100, 108, 163)">
+    <div class="container p-2"
+      style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(100, 108, 163)">
       <div class="container">
-        <div class="row" >
+        <div class="row">
           <div class="col-10 select" style="background-color:rgb(255, 255, 255)">
-            <div class="row" >
+            <div class="row">
               <div style="padding: 4px" class="col-3" *ngFor="let dato of seleccionado">
-                <img class="seleccionados" *ngIf="dato.id_tipo!=1" [src]="dato.codigo"  />
+                <img class="seleccionados" *ngIf="dato.id_tipo!=1" [src]="dato.codigo" />
                 <div class="seleccionados" *ngIf="dato.id_tipo===1" [ngStyle]="{'background': dato.codigo}"></div>
               </div>
             </div>
@@ -32,21 +33,27 @@
       </div>
 
     </div>
-    <div class="row"
-      style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);">
-      <div style="padding: 4px" class="col-4 choice py-2" *ngFor="let dato of data">
-        <img *ngIf="dato.id_tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in"
-          [src]="dato.codigo" (click)="addSeleccionar(dato)" />
-        <div class="colores grow-in" *ngIf="dato.id_tipo===1" [ngStyle]="{'background': dato.codigo}" (click)="addSeleccionar(dato)"></div>
+    <div class="loading">
+      <div class="row"
+        style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);">
+        <div style="padding: 4px" class="col-4 choice" *ngFor="let dato of data">
+          <img *ngIf="dato.id_tipo!=1" width="100" height="100" style="border-radius: 0px;" class="grow-in"
+            [src]="dato.codigo" (click)="addSeleccionar(dato)" />
+          <p class="coloresLetras" *ngIf="dato.id_tipo!=1">{{dato.nombre | uppercase}}</p>
+          <div class="colores grow-in" *ngIf="dato.id_tipo===1" [ngStyle]="{'background': dato.codigo}"
+            (click)="addSeleccionar(dato)"></div>
+          <p class="coloresLetras" *ngIf="dato.id_tipo===1">{{dato.nombre | uppercase}}</p>
+        </div>
       </div>
+      <ngx-loading [show]="loading" [config]="{
+          animationType: ngxLoadingAnimationTypes.circleSwish,
+          backdropBorderRadius: '3px'
+        }" [template]="loadingTemplate"></ngx-loading>
     </div>
+
     <p style="font-weight:bold" class="text-secondary m-2">Pista: {{pista}}</p>
   </div>
 
-  <igx-dialog #alert
-  title="Notificación"
-  message="No se puede seleccionar repetidos"
-  leftButtonLabel="Aceptar"
-  (leftButtonSelect)="close()">
-</igx-dialog>
+  <igx-dialog #alert title="Notificación" [message]="mensaje" leftButtonLabel="Aceptar" (leftButtonSelect)="close()">
+  </igx-dialog>
 </ion-content>

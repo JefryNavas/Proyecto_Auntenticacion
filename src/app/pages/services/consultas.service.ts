@@ -8,7 +8,7 @@ export class ConsultasService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:3000/'
+  url = 'https://api-rest-autenticacion.herokuapp.com/'
 
   registrarUsuario(body){
     return this.http.post(`${this.url}users`,JSON.stringify(body),{

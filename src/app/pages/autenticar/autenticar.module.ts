@@ -8,6 +8,7 @@ import { AutenticarPageRoutingModule } from './autenticar-routing.module';
 
 import { AutenticarPage } from './autenticar.page';
 import { ThemeModule } from '../../theme/theme.module';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ThemeModule } from '../../theme/theme.module';
     FormsModule,
     IonicModule,
     AutenticarPageRoutingModule,
-    ThemeModule
+    ThemeModule,
+    NgxLoadingModule.forRoot({})
   ],
   declarations: [AutenticarPage]
 })
