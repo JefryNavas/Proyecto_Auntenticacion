@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthNoIngresadoGuard } from './guards/auth-no-ingresado.guard';
+import { AutenticarGuard } from './guards/autenticar.guard';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
   {
     path: 'autenticar',
     loadChildren: () => import('./pages/autenticar/autenticar.module').then(m => m.AutenticarPageModule)
-    , canActivate: [AuthGuard]
+    , canActivate: [AutenticarGuard]
   },
   {
     path: 'inicio',
