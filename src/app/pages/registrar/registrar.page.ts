@@ -62,25 +62,10 @@ export class RegistrarPage implements OnInit {
     });
     this.metodoDeAuntenticacionForm = this._formBuilder.group({
       eleccion1: ['', Validators.required],
-      eleccion2: ['', Validators.required],
     });
 
   }
   submit(){
-/*     console.log(this.datosDeRegistroForm.value)
-    console.log(this.metodoDeAuntenticacionForm.value)
-     */
-    let resp;
-
-    let eleccion = this.metodoDeAuntenticacionForm.value.eleccion1
-    if (eleccion === '1') {
-      resp = this.datosDeRegistroForm.value.madre
-    }else if(eleccion === '2'){
-      resp = this.datosDeRegistroForm.value.mascota
-    }else{
-      resp = this.datosDeRegistroForm.value.fruta
-    }
-
     let body = {
       apellidos: this.datosPersonalesForm.value.apellidos,
       nombres: this.datosPersonalesForm.value.nombres,
@@ -97,7 +82,7 @@ export class RegistrarPage implements OnInit {
       madre: this.datosDeRegistroForm.value.madre,
       mascota: this.datosDeRegistroForm.value.mascota,
       fruta: this.datosDeRegistroForm.value.fruta,
-      tipo_letra: this.metodoDeAuntenticacionForm.value.eleccion2,
+      tipo_letra: this.metodoDeAuntenticacionForm.value.eleccion1,
     }
     this.consultaService.registrarUsuario(body).subscribe((data:any)=>{
       if (data.estado) {

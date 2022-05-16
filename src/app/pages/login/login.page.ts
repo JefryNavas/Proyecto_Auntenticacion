@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IgxDialogComponent } from 'igniteui-angular';
@@ -8,17 +8,24 @@ import { ConsultasService } from '../services/consultas.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit,DoCheck {
   form: FormGroup;
   @ViewChild('alert', { static: true })
   public alert: IgxDialogComponent;
-
+  @ViewChild('alert2', { static: true })
+  public alert2: IgxDialogComponent;
   constructor(
     private _formBuilder: FormBuilder,
     private consultaService: ConsultasService,
     private router: Router) {
       
      }
+  ngDoCheck(): void {
+    if (JSON.parse(localStorage.getItem('intentos'))) {
+      this.alert2.open()
+      localStorage.clear();
+    }
+  }
   ngOnInit() {
     this.form = this._formBuilder.group({
       usuario: ['', Validators.required],
@@ -42,5 +49,11 @@ export class LoginPage implements OnInit {
   }
   close(){
     this.alert.close();
+    this.alert2.close();
   }
+  deshabilitaRetroceso(){
+    window.location.hash="no-back-button";
+    window.location.hash="Again-No-back-button" //chrome
+    window.onhashchange=function(){window.location.hash="";}
+}
 }

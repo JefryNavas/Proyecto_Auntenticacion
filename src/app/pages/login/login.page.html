@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-title style="text-align: center;">Login</ion-title>
@@ -21,18 +22,18 @@
         <label igxLabel for="password">Contraseña</label>
       </igx-input-group>
     </form>
-      <div class="d-grid gap-2 button-sample">
-        <button (click)="login()" [disabled]="form.invalid" igxButton="raised" class="btn">INICIAR SESION</button>
-      </div>
-   
+    <div class="d-grid gap-2 button-sample">
+      <button (click)="login()" [disabled]="form.invalid" igxButton="raised" class="btn">INICIAR SESION</button>
+    </div>
+
     <div class="d-grid gap-2 button-sample">
       <button routerLink="/registrar" class="btn" igxButton="raised">REGISTRARSE</button>
     </div>
   </div>
-  <igx-dialog #alert
-  title="Notificación"
-  message="Usuario o Contraseña inválidos"
-  leftButtonLabel="Aceptar"
-  (leftButtonSelect)="close()">
-</igx-dialog>
+  <igx-dialog #alert title="Notificación" message="Usuario o Contraseña inválidos" leftButtonLabel="Aceptar"
+    (leftButtonSelect)="close()">
+  </igx-dialog>
+  <igx-dialog #alert2 title="Notificación" message="Superaste los intentos permitidos" leftButtonLabel="Aceptar"
+    (leftButtonSelect)="close()">
+  </igx-dialog>
 </ion-content>

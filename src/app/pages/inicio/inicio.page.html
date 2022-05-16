@@ -1,10 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inicio</ion-title>
+    <div class="row">
+      <div class="col-7">
+        <ion-title>Inicio</ion-title>
+      </div>
+      <div class="col-5">
+        <button (click)="logout()" igxButton="raised" class="btn">Cerrar Sesión</button>
+
+      </div>
+    </div>
+   
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
   <div class="sample-column card-wrapper">
     <igx-card>
       <igx-card-media height="180px">

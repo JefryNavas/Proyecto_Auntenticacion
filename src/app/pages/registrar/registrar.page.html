@@ -162,14 +162,8 @@
       <span igxStepTitle>Método de Autenticación</span>
       <div igxStepContent>
         <form [formGroup]="metodoDeAuntenticacionForm">
-          <p class="text-dark m-2">¿Que nombre vas a elegir?</p>
-          <igx-radio-group [alignment]="alignment" formControlName="eleccion1">
-            <igx-radio value="1">Madre</igx-radio>
-            <igx-radio value="2">Mascota</igx-radio>
-            <igx-radio value="3">Fruta Favorita</igx-radio>
-          </igx-radio-group>
           <p class="text-dark m-2">¿Qué tipo de letras va a escoger?</p>
-          <igx-radio-group [alignment]="alignment" formControlName="eleccion2">
+          <igx-radio-group [alignment]="alignment" formControlName="eleccion1">
             <igx-radio value="V">Vocales</igx-radio>
             <igx-radio value="C">Consonantes</igx-radio>
           </igx-radio-group>

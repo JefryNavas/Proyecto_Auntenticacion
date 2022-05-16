@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Card } from './card.blueprint';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-
+  @HostListener('window:hashchange', ['$event'])
+  hashChangeHandler(e) {
+    window.location.hash = "dontgoback";
+  }
   usuario: any
-  constructor() {
+  constructor(private router: Router,) {
     this.usuario = JSON.parse(localStorage.getItem('usuario'))
     console.log(this.usuario)
   }
@@ -22,5 +27,8 @@ export class InicioPage implements OnInit {
       title: `${this.usuario.nombres} ${this.usuario.apellidos}, ${this.usuario.edad}`
     });
   }
-
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['login'])
+  }
 }
