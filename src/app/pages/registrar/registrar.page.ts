@@ -4,6 +4,7 @@ import {  IgxDialogComponent, IgxStepperComponent, RadioGroupAlignment } from 'i
 import { name_ciudades } from './ciudades';
 import { ConsultasService } from '../services/consultas.service';
 import { Router } from '@angular/router';
+import { ValidacionesPropias } from '../../Validaciones';
 
 @Component({
   selector: 'app-registrar',
@@ -42,7 +43,7 @@ export class RegistrarPage implements OnInit {
     this.datosPersonalesForm = this._formBuilder.group({
       apellidos: ['', Validators.required],
       nombres: ['', Validators.required],
-      cedula: ['', Validators.required],
+      cedula: ['', [Validators.required,ValidacionesPropias.validarCedula]],
       edad: ['', Validators.required],
       genero: ['', Validators.required],
     });
