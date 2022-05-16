@@ -83,8 +83,7 @@
               <igx-icon>phone</igx-icon>
             </igx-suffix>
             <igx-prefix>+593</igx-prefix>
-            <input igxInput name="movil" formControlName="movil" type="text" required maxlength="9"
-              pattern="[0-9]{1,50}" />
+            <input igxInput name="movil" formControlName="movil" type="tel" required maxlength="9" pattern="[9-9]{1}[6-9]{1}[0-9]{7}" />
             <label igxLabel for="movil" id="telefono">Móvil:</label>
           </igx-input-group>
           <igx-select formControlName="ciudad" #select>
