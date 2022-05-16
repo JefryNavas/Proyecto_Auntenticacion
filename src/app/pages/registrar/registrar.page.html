@@ -66,10 +66,8 @@
       <span igxStepTitle>Información Importante</span>
       <div igxStepContent>
         <form [formGroup]="informacionImportanteForm">
-          <div class="date-picker-wrapper">
-            <igx-date-picker formControlName="fecha" minValue="2000-01-01" >
-              <label igxLabel>Fecha de Nacimiento</label>
-            </igx-date-picker>
+          <div class="date-picker-wrapper" style="background-color: aliceblue;">
+              <input style="background-color: rgb(64 81 181);color: rgb(250, 245, 245);width: 100%;" type='date'  max='2004-01-01'/>
           </div>
           <igx-input-group>
             <igx-suffix>
