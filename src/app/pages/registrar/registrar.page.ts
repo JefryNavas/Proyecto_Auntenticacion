@@ -17,7 +17,8 @@ export class RegistrarPage implements OnInit {
   public alignment = RadioGroupAlignment.vertical;
   public items = [{id: 1,nombre: 'Masculino'},{id:2 ,nombre: 'Femenino'}];
   public items2 = name_ciudades
-  
+  mensaje=''
+  registro=false
 
   public date = new Date();
   @ViewChild('stepper', { static: true })
@@ -26,8 +27,8 @@ export class RegistrarPage implements OnInit {
   @ViewChild('alert', { static: true })
   public alert: IgxDialogComponent;
 
-  @ViewChild('alert2', { static: true })
-  public alert2: IgxDialogComponent;
+  icono=''
+
 
   datosPersonalesForm: FormGroup;
   informacionImportanteForm: FormGroup;
@@ -87,9 +88,14 @@ export class RegistrarPage implements OnInit {
     }
     this.consultaService.registrarUsuario(body).subscribe((data:any)=>{
       if (data.estado) {
+        this.icono='done_outline'
+        this.mensaje = 'El usuario se registro correctamente'
+        this.registro=true
         this.alert.open();
       }else{
-        this.alert2.close();
+        this.icono='error'
+        this.mensaje = data.message
+        this.alert.open();
       }
     })
 
@@ -103,9 +109,9 @@ export class RegistrarPage implements OnInit {
     this.stepper.reset()
   }
   close(){
-    this.router.navigate(['/login'])
-  }
-  errorClose(){
-    this.alert2.close();
+    if (this.registro) {
+      this.router.navigate(['/login'])
+    }
+    this.alert.close();
   }
 }

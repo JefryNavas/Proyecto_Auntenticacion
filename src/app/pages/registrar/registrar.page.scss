@@ -4,6 +4,13 @@ $sample-gap: 0px;
 	display: flex;
 	gap: $sample-gap;
 }
+.dialog-container {
+    display: flex;
+}
+
+igx-icon {
+    margin-right: 8px;
+}
 
 .sample-split {
 	> * {

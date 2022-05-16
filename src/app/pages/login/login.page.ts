@@ -8,21 +8,20 @@ import { ConsultasService } from '../services/consultas.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit,DoCheck {
+export class LoginPage implements OnInit, DoCheck {
   form: FormGroup;
   @ViewChild('alert', { static: true })
   public alert: IgxDialogComponent;
-  @ViewChild('alert2', { static: true })
-  public alert2: IgxDialogComponent;
+  mensaje=''
   constructor(
     private _formBuilder: FormBuilder,
     private consultaService: ConsultasService,
     private router: Router) {
-      
-     }
+  }
   ngDoCheck(): void {
     if (JSON.parse(localStorage.getItem('intentos'))) {
-      this.alert2.open()
+      this.mensaje='Superaste los intentos permitidos'
+      this.alert.open()
       localStorage.clear();
     }
   }
@@ -34,26 +33,22 @@ export class LoginPage implements OnInit,DoCheck {
     });
   }
 
-  login(){
+  login() {
     let usuario = this.form.value
-    this.consultaService.getUsuarios().subscribe((data:[])=>{
-      let user = data.find((user:any) =>user.usuario === usuario.usuario && user.password === usuario.password)
+    this.consultaService.getUsuarios().subscribe((data: []) => {
+      let user = data.find((user: any) => user.usuario === usuario.usuario && user.password === usuario.password)
       if (!user) {
+        this.mensaje='Usuario o Contraseña inválidos'
         this.alert.open()
         return
       }
-      localStorage.setItem('usuario',JSON.stringify(user))
+      localStorage.setItem('usuario', JSON.stringify(user))
       this.router.navigate(['/autenticar'])
     })
-    
+
   }
-  close(){
+  close() {
     this.alert.close();
-    this.alert2.close();
+
   }
-  deshabilitaRetroceso(){
-    window.location.hash="no-back-button";
-    window.location.hash="Again-No-back-button" //chrome
-    window.onhashchange=function(){window.location.hash="";}
-}
 }

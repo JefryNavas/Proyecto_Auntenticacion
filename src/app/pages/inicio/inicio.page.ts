@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Card } from './card.blueprint';
 import { Router } from '@angular/router';
+import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-inicio',
@@ -15,7 +16,6 @@ export class InicioPage implements OnInit {
   usuario: any
   constructor(private router: Router,) {
     this.usuario = JSON.parse(localStorage.getItem('usuario'))
-    console.log(this.usuario)
   }
   public card;
   ngOnInit() {

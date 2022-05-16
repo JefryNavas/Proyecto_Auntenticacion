@@ -25,6 +25,7 @@ export class AutenticarPage implements OnInit {
   loading = false
   intentos=0
   posiciones:any
+  icono=''
 
   public loadingTemplate!: TemplateRef<any>;
 
@@ -57,17 +58,21 @@ export class AutenticarPage implements OnInit {
     if (!repetido) {
       this.seleccionado.push(dato)
     } else {
+      this.icono='report_problem'
       this.mensaje = 'No se puede seleccionar repetidos'
       this.alert.open()
     }
     if (this.seleccionado.length === 4) {
       if (this.cont === 4) {
+        this.icono='check'
         this.mensaje = 'Autenticación exitosa'
         this.load()
         localStorage.setItem('login', JSON.stringify(true))
         return
       } else {
+        
         this.intentos = this.intentos + 1
+        this.icono='report_problem'
         this.mensaje = 'Error de validación'
         this.load()
         this.cont = 0
@@ -89,6 +94,7 @@ export class AutenticarPage implements OnInit {
     this.seleccionado.pop();
   }
   close() {
+    this.icono=''
     if (this.cont===4) {
       this.router.navigate(['inicio'])
     }

@@ -56,3 +56,11 @@ div.colores:active{
     font-weight: bolder;
     color: #ffffff;
 }
+
+.dialog-container {
+    display: flex;
+}
+
+igx-icon {
+    margin-right: 8px;
+}

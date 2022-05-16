@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   constructor() {
-    localStorage.clear()
+   /*  localStorage.clear() */
   }
 }

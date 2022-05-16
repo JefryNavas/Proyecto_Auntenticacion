@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-title style="text-align: center;">Login</ion-title>
@@ -15,7 +14,7 @@
     <form [formGroup]="form">
       <igx-input-group>
         <input igxInput formControlName="usuario" name="email" type="text" />
-        <label igxLabel for="email">Email</label>
+        <label igxLabel for="email">Usuario</label>
       </igx-input-group>
       <igx-input-group>
         <input igxInput formControlName="password" name="password" type="password" />
@@ -30,10 +29,17 @@
       <button routerLink="/registrar" class="btn" igxButton="raised">REGISTRARSE</button>
     </div>
   </div>
-  <igx-dialog #alert title="Notificación" message="Usuario o Contraseña inválidos" leftButtonLabel="Aceptar"
-    (leftButtonSelect)="close()">
-  </igx-dialog>
-  <igx-dialog #alert2 title="Notificación" message="Superaste los intentos permitidos" leftButtonLabel="Aceptar"
-    (leftButtonSelect)="close()">
-  </igx-dialog>
+  <div igxOverlayOutlet>
+    <igx-dialog #alert [message]="mensaje" leftButtonLabel="Aceptar" (leftButtonSelect)="close()">
+      <igx-dialog-title>
+        <div class="dialog-container">
+          <igx-icon [style.color]="'#e41c77'">account_box</igx-icon>
+          <div class="dialog-title">Notificación</div>
+        </div>
+      </igx-dialog-title>
+      <div igxDialogActions class="dialog-container dialog-actions">
+        <button igxButton="raised" igxRipple="white" (click)="alert.close()">Aceptar</button>
+      </div>
+    </igx-dialog>
+  </div>
 </ion-content>

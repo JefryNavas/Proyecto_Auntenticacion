@@ -57,6 +57,17 @@
     
   </div>
 
-  <igx-dialog #alert title="Notificación" [message]="mensaje" leftButtonLabel="Aceptar" (leftButtonSelect)="close()">
-  </igx-dialog>
+  <div igxOverlayOutlet>
+    <igx-dialog #alert [message]="mensaje" leftButtonLabel="Aceptar" (leftButtonSelect)="close()">
+      <igx-dialog-title>
+        <div class="dialog-container">
+          <igx-icon [style.color]="'#e41c77'">{{icono}}</igx-icon>
+          <div class="dialog-title">Notificación</div>
+        </div>
+      </igx-dialog-title>
+      <div igxDialogActions class="dialog-container dialog-actions">
+        <button igxButton="raised" igxRipple="white" (click)="alert.close()">Aceptar</button>
+      </div>
+    </igx-dialog>
+  </div>
 </ion-content>
