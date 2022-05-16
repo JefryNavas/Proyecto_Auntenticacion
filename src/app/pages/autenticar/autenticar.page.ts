@@ -24,6 +24,7 @@ export class AutenticarPage implements OnInit {
   cont2 = 0
   loading = false
   intentos=0
+  posiciones:any
 
   public loadingTemplate!: TemplateRef<any>;
 
@@ -38,14 +39,12 @@ export class AutenticarPage implements OnInit {
   }
 
   ngOnInit(): void {
-/*     if (JSON.parse(localStorage.getItem('login'))) {
-      this.router.navigate(['inicio'])
-    } */
     this.loading = true
     this.consultaService.getData(JSON.stringify(this.usuario)).subscribe((datos: any) => {
       this.data = datos.resultado
       console.log(this.data)
       this.pista = datos.pista
+      this.posiciones = datos.posiciones
       this.loading = false
     })
   }
