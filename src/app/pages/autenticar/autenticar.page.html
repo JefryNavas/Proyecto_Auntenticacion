@@ -51,7 +51,10 @@
         }" [template]="loadingTemplate"></ngx-loading>
     </div>
 
-    <p style="font-weight:bold" class="text-secondary m-2">Pista: {{pista}}</p>
+    <p style="font-weight:bold" class="text-secondary m-2">Pista: {{pista}} <br>
+    Posiciones: {{posiciones}}
+    </p>
+    
   </div>
 
   <igx-dialog #alert title="Notificación" [message]="mensaje" leftButtonLabel="Aceptar" (leftButtonSelect)="close()">
