@@ -26,7 +26,7 @@
               <igx-icon>person</igx-icon>
             </igx-suffix>
             <input igxInput name="Apellidos" formControlName="apellidos" type="text" required
-              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
+              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" minlength="3"/>
             <label igxLabel for="Apellidos">Apellidos:</label>
           </igx-input-group>
           <igx-input-group>
@@ -35,16 +35,16 @@
             </igx-suffix>
             <label igxLabel for="nombres">Nombres:</label>
             <input igxInput name="nombres" id="nombres" formControlName="nombres" type="text" required
-              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
+              pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" minlength="3"/>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput maxlength="10" name="Cedula" formControlName="cedula" type="text" required
+            <input igxInput minlength="10" maxlength="10" name="Cedula" formControlName="cedula" type="text" required
               pattern="[0-9]{2,50}" />
             <label igxLabel for="Cedula" id="Cedula">Cédula:</label>
             <igx-hint position="start">Máx. 10 digitos</igx-hint>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput maxlength="2" name="Edad" formControlName="edad" type="text" required
+            <input igxInput min="18" max="99" name="Edad" formControlName="edad" type="number" required
               pattern="[0-9]{1,50}" />
             <label igxLabel for="Edad" id="Edad">Edad:</label>
           </igx-input-group>
@@ -66,8 +66,9 @@
       <span igxStepTitle>Información Importante</span>
       <div igxStepContent>
         <form [formGroup]="informacionImportanteForm">
+          <label style="color: rgb(62, 63, 163)" for="fecha">Fecha de Nacimiento:</label>
           <div class="date-picker-wrapper" style="background-color: aliceblue;">
-              <input style="background-color: rgb(64 81 181);color: rgb(250, 245, 245);width: 100%;" type='date'  max='2004-01-01'/>
+              <input formControlName="fecha" name="Fecha" style="background-color: rgb(64 81 181);color: rgb(250, 245, 245);width: 100%;" type='date'  max='2004-01-01'/>
           </div>
           <igx-input-group>
             <igx-suffix>
@@ -131,18 +132,18 @@
             <label igxLabel for="password" id="password">Contraseña:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="madre" formControlName="madre" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
+            <input igxInput minlength="3" name="madre" formControlName="madre" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="madre" id="madre">Nombre de la Madre:</label>
           </igx-input-group>
           <igx-input-group>
             <igx-suffix>
               <igx-icon>pets</igx-icon>
             </igx-suffix>
-            <input igxInput name="mascota" formControlName="mascota" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
+            <input igxInput minlength="3" name="mascota" formControlName="mascota" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="mascota" id="mascota">Nombre de la Mascota:</label>
           </igx-input-group>
           <igx-input-group>
-            <input igxInput name="fruta" formControlName="fruta" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
+            <input igxInput minlength="3" name="fruta" formControlName="fruta" type="text" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" />
             <label igxLabel for="fruta" id="fruta">Fruta Favorita:</label>
           </igx-input-group>
         </form>
