@@ -41,7 +41,9 @@ export class AutenticarPage implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
+    console.log(this.usuario)
     this.consultaService.getData(JSON.stringify(this.usuario)).subscribe((datos: any) => {
+      console.log(datos)
       this.data = datos.resultado
       console.log(this.data)
       this.pista = datos.pista
