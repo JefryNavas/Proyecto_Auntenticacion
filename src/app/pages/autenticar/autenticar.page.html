@@ -9,10 +9,13 @@
     <div class="row"
       style="height: auto;margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);margin: 10px;">
       <div class="title p-2">
-        <h5>Hola {{usuario.nombres}} {{usuario.apellidos}} </h5>
+        <h5 style="font-family: 'Times New Roman', Times, serif;">Hola {{usuario.nombres}} {{usuario.apellidos}} </h5>
       </div>
     </div>
-    <div class="container p-2"
+    <p class="text-secondary alert-primary p-2" style="font-size: 15px; color: black;">Estimado usuario recuerda tu método de autenticación</p>
+   
+    <p style="color: darkslategray; font-family: 'Times New Roman', Times, serif; font-weight: bold;">Escoje las 4 imágenes</p>
+    <div class="container p-1"
       style="border-radius: 10px;border-color: black;border-style: groove;background-color:rgb(100, 108, 163)">
       <div class="container">
         <div class="row">
@@ -26,13 +29,14 @@
           </div>
           <div class="col-2" style="margin-left: -5px;">
             <button class="btn btn-danger my-2" (click)="deleteSeleccionar()">
-              <igx-icon style="width: 0px;margin-left: -24px;">delete_forever</igx-icon>
+              <igx-icon style="width: 0px;margin-left: -15px;">delete_forever</igx-icon>
             </button>
           </div>
         </div>
       </div>
 
     </div>
+    <br>
     <div class="loading">
       <div class="row"
         style="margin:0;border-radius: 10px;border-color: black;border-style: groove; background-color: rgb(100, 108, 163);">
@@ -49,9 +53,9 @@
           animationType: ngxLoadingAnimationTypes.circleSwish,
           backdropBorderRadius: '3px'
         }" [template]="loadingTemplate"></ngx-loading>
-    </div>
 
-    <p style="font-weight:bold" class="text-secondary m-2">Pista: {{pista}} <br>
+    </div>
+     <p style="font-weight:bold; font-size: 20px;" class="text-secondary m-2">Pista: {{pista}} <br>
     Posiciones: {{posiciones}}
     </p>
     

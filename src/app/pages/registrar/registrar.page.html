@@ -54,6 +54,7 @@
               {{item.nombre}}
             </igx-select-item>
           </igx-select>
+          
         </form>
         <div class="sample-step-actions">
           <button igxButton="raised" (click)="stepper.next()" [disabled]="!datosPersonalesForm.valid">
@@ -165,6 +166,7 @@
             <igx-radio value="V">Vocales</igx-radio>
             <igx-radio value="C">Consonantes</igx-radio>
           </igx-radio-group>
+          
         </form>
         <div class="d-grid gap-2 button-sample">
           <button igxButton="raised" (click)="submit()"
